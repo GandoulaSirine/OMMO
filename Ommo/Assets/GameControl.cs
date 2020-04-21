@@ -80,18 +80,29 @@ public class GameControl : MonoBehaviour
 
     public static int MovePlayer(int playerToMove)
     {
+        print(player1.GetComponent<FollowThePath>().waypointIndex + "<=" + player2.GetComponent<FollowThePath>().waypointIndex+"pp"+ playerToMove);
         if (player1.GetComponent<FollowThePath>().waypointIndex <= player2.GetComponent<FollowThePath>().waypointIndex)
         {
             player2.GetComponent<FollowThePath>().stop = false;
+            print(1);
         }
-        else if (player1.GetComponent<FollowThePath>().stop)
+        else if (player1.GetComponent<FollowThePath>().stop&& playerToMove==0)
+        {
+            print(2);
             playerToMove = (playerToMove + 1) % 2;
+        }
+            
         if (player2.GetComponent<FollowThePath>().waypointIndex <= player1.GetComponent<FollowThePath>().waypointIndex)
         {
             player1.GetComponent<FollowThePath>().stop = false;
+            print(3);
         }
-        else if (player2.GetComponent<FollowThePath>().stop)
+        else if (player2.GetComponent<FollowThePath>().stop&& playerToMove == 1)
+        {
             playerToMove = (playerToMove + 1) % 2;
+            print(4);
+        }
+        print("pp" + playerToMove);
         switch (playerToMove)
         {
             case 0:

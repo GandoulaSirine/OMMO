@@ -62,6 +62,7 @@ public class FollowThePath : MonoBehaviour
                 Move();
                 Dice.coroutineAllowed = false;
                 dontMove = false;
+                
             }
             else if (waypoints[2].transform.position == transform.position)
             {
@@ -105,10 +106,11 @@ public class FollowThePath : MonoBehaviour
                 stopPoint = 19;
                 waypointIndex = 31;
             }
-            else if (waypoints[24].transform.position == transform.position)
+            else if (waypoints[24].transform.position == transform.position&&!stop)
             {
-                t = 2;
+                
                 stop = true;
+                Dice.coroutineAllowed = true;
             }
                 if (waypoints[stopPoint].transform.position == transform.position&& maj)
             {
@@ -116,12 +118,14 @@ public class FollowThePath : MonoBehaviour
                 Dice.coroutineAllowed = true;
                 moveBack = false;
                 dontMove = true;
+                
             }
         }
         else
         {
             Dice.coroutineAllowed = false;
             t -= Time.deltaTime;
+            
         }
     }
 

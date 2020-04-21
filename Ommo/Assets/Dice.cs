@@ -6,7 +6,7 @@ public class Dice : MonoBehaviour
 
     private Sprite[] diceSides;
     private SpriteRenderer rend;
-    private int whosTurn = 0;
+    public int whosTurn = 0;
     public static bool coroutineAllowed = true;
     public static GameObject dice;
 
@@ -21,6 +21,7 @@ public class Dice : MonoBehaviour
 
     private void OnMouseDown()
     {
+        print(coroutineAllowed);
         if (!GameControl.gameOver && coroutineAllowed)
             StartCoroutine("RollTheDice");
     }
@@ -36,7 +37,7 @@ public class Dice : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
 
-        GameControl.diceSideThrown = randomDiceSide + 1;
+        GameControl.diceSideThrown =  randomDiceSide + 1;
         
             whosTurn=GameControl.MovePlayer(whosTurn);
         
